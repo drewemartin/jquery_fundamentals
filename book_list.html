@@ -7,6 +7,58 @@
 
 <p>My first paragraph.</p>
 
+<script type="text/javascript"> 
+
+	    function Book(title, author, alreadyRead, img){
+      this.title = title;
+      this.author = author;
+      this.alreadyRead = alreadyRead;
+      this.img = img;
+
+        this.displayBook = function(book){
+        var titleAuthor = title + " by " + author;
+        if (alreadyRead === true){
+          return "You have already read " + titleAuthor + "!";
+        }else{
+          return "You have not read " + titleAuthor + " yet!";
+        };
+      };
+    }
+    var book1 = new Book("Atlas Shrugged", "Ayn Rand", true, "http://gretachristina.typepad.com/.a/6a00d8341bf68b53ef0133ec5da809970b-800wi");
+    var book2 = new Book("War and Peace", "Leo Tolstoty", false, "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRmdjiZ2Jzmh2ZqXVbZTqvkKsujHWFeEWducnBoGi6vdYRrqfeOpXkAkg");
+    var book3 = new Book("On the road", "Jack Kerouac", false, "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR_3b-s81q962qJa1RbEg-Plmx_Xh_XICnhYtMCyNl4DrjjR6l5F1s0AQ");
+
+    var books = [book1, book2, book3];
+    	// Book(title, author, alreadyRead, img)
+
+    
+    
+
+	books.forEach(function(book){
+		var li = document.createElement('li');
+		var ul = document.createElement('ul');
+		var body = document.getElementsByTagName('body')[0];
+		var image = document.createElement('img');
+
+		image.src = book.img;
+
+		li.textContent = (book.title + " by " + book.author);
+		li.innerHTML += ("<br>");
+		li.appendChild(image);
+
+		if (book.alreadyRead === false){
+			li.style.color = "red";
+			li.innerHTML += ("<br> <em>not read yet <em>");
+		};
+
+
+		ul.appendChild(li);
+		body.appendChild(ul);
+
+
+	});
+
+</script>
 </body>
 </html>
 
